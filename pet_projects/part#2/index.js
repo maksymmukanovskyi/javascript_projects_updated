@@ -21,21 +21,52 @@ checkWinner(data2);
 
 //challenge_2
 
-const billArr = [125, 555,  44];
+// const billArr = [125, 555,  44];
 
-const calcTip = function(billVal){
-    const getPercentage = (num, perc) => Math.round((num/100)*perc);
-    return billVal > 50 && billVal < 300? getPercentage(billVal, 15): getPercentage(billVal, 20)
+// const calcTip = function(billVal){
+//     const getPercentage = (num, perc) => Math.round((num/100)*perc);
+//     return billVal > 50 && billVal < 300? getPercentage(billVal, 15): getPercentage(billVal, 20)
+// };
+
+// const tips = billArr.reduce((acc, el) => acc.concat(calcTip(el)) ,[]);
+
+// const total = billArr.map((el, idx) => el + tips[idx]);
+
+// console.log(billArr);
+// console.log(tips);
+// console.log(total);
+
+/*Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m
+tall.*/
+const persons = [
+{
+name: 'Marks',
+weight: 78,
+height: 1.69,
+},
+{
+name: 'John',
+weight: 36,
+height: 1.95,
+},
+
+];
+
+function CalcBMI(name, weight, height){
+    this.name = name;
+    this.height = height;
+    this.weight = weight;
+};
+CalcBMI.prototype.calculate = function(){
+    return  this.weight/this.height ** 2;
+};
+CalcBMI.prototype.displayData = function(){
+   return {
+
+       name: this.name,
+       bmi: +this.calculate().toFixed(2),
+   } 
 };
 
-const tips = billArr.reduce((acc, el) => acc.concat(calcTip(el)) ,[]);
 
-const total = billArr.map((el, idx) => el + tips[idx]);
-
-console.log(billArr);
-console.log(tips);
-console.log(total);
-
-
-
-
+const displayResults = persons.map(el => new CalcBMI(el.name, el.weight, el.height).displayData()).sort((a,b) => a.bmi - b.bmi).reverse().forEach(el => console.log(`${el.name} BMI is (${el.bmi})!`));
