@@ -38,7 +38,9 @@ checkWinner(data2);
 
 /*Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m
 tall.*/
-const persons = [
+
+//challenge_3
+/*const persons = [
 {
 name: 'Marks',
 weight: 78,
@@ -69,4 +71,25 @@ CalcBMI.prototype.displayData = function(){
 };
 
 
-const displayResults = persons.map(el => new CalcBMI(el.name, el.weight, el.height).displayData()).sort((a,b) => a.bmi - b.bmi).reverse().forEach(el => console.log(`${el.name} BMI is (${el.bmi})!`));
+const displayResults = persons.map(el => new CalcBMI(el.name, el.weight, el.height).displayData()).sort((a,b) => a.bmi - b.bmi).reverse().forEach(el => console.log(`${el.name} BMI is (${el.bmi})!`));*/
+
+// challenge_4
+
+/*const billArr = [22, 295, 176, 440, 37, 105, 10, 1100, 86 , 52];
+
+const calcTip = function(billVal){
+    const getPercentage = (num, perc) => Math.round((num/100)*perc);
+    return billVal > 50 && billVal < 300? getPercentage(billVal, 15): getPercentage(billVal, 20)
+};
+
+const tips = billArr.reduce((acc, el) => acc.concat(calcTip(el)) ,[]);
+
+const total = billArr.map((el, idx) => el + tips[idx]);
+const average = Math.floor(total.reduce((acc, el) => acc += el,0)/total.length);
+
+console.log(billArr);
+console.log(tips);
+console.log(total);
+console.log('average:', average);
+*/
+
