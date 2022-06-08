@@ -18,10 +18,12 @@ guess: selector('.guess'),
 checkBtn: selector('.check'),
 body: selector('body'),
 again: selector('.again'),
+highScore: selector('.highscore'),
 };
 
 const store = {
     score: 20,
+    highScore: 0,
     secretNum: Math.trunc(Math.random()*20)-1,
     message : '',
     number: '',
@@ -72,6 +74,10 @@ function scoreUpdate(){
     domStrings.score.textContent = store.score;
 }
 
+function highScoreCheckUpdater(score, highScore){
+    score > highScore? store.highScore = score:store.highScore;
+    domStrings.highScore.textContent = store.highScore;
+}
 
 
 
@@ -85,6 +91,7 @@ function clickOnCheck(e){
     }else if(store.guess === store.secretNum){
         numberUpdate(store.secretNum, '30rem');
         messageUpdate('Correct Number');
+        highScoreCheckUpdater(store.score, store.highScore);
         domStrings.body.style.backgroundColor = '#60b347';
 
     }else if(store.guess > store.secretNum){
